@@ -1,3 +1,95 @@
-h1 {
-    color: green
+ .grid-container {
+    margin: 0 auto;
+    height: 1000px;
+    min-width: 800px;
+    max-width: 1200px;
+    display: grid;
+    grid-template-columns: 1fr 1fr 1fr;
+    grid-template-rows: 160px 1fr;
+    border: 1px solid black;
+ }
+
+ .top-container {
+    align-self: stretch;
+    grid-column-start: 1;
+    grid-column-end: 4;
+    border: 1px solid red;
+ }
+
+ .nav-bar ul {
+    list-style: none;
+    height: auto;
+    padding-left: 0px;
+}
+
+.nav-bar li {
+    display: inline;
+}
+
+.nav-bar button {
+    width: 160px;
+    height: 60px;
+    margin-left: 10px;
+    margin-right: 10px;
+    font-size: 24px;
+}
+
+
+
+
+ .left-container {
+    align-self: stretch;
+    grid-column-start: 1;
+    grid-column-end: 2;
+    margin: 0 auto;
+    overflow: auto;
+    border: 1px solid green;
+}
+
+.left-container ul {
+    list-style: none;
+    padding-left: 0px;
+}
+
+.left-container li {
+    margin-top: 10px;
+}
+
+.train-btn {
+    width: 250px;
+    height: 100px;
+}
+ .right-container {
+    align-self: stretch;
+    grid-column-start: 2;
+    grid-column-end: 4;
+    border: 1px solid blue;
+ }
+
+
+
+
+
+
+
+
+.center {
+    margin: 0 auto;
+    text-align: center;
+}
+
+.green {
+    background-color: #008150;
+}
+
+.red {
+    background-color: #fa2d27;
+}
+
+.orange {
+    background-color: #fd8a03;
+}
+
+.blue {
+    background-color: #2f5da6;
 }
