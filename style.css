@@ -5,15 +5,21 @@
     max-width: 1200px;
     display: grid;
     grid-template-columns: 1fr 1fr 1fr;
-    grid-template-rows: 160px 1fr;
-    border: 1px solid black;
+    grid-template-rows: 180px 1fr;
+    font-family: 'Helvetica';
+    /* border: 1px solid black; */
  }
 
  .top-container {
     align-self: stretch;
     grid-column-start: 1;
     grid-column-end: 4;
-    border: 1px solid red;
+    /* border: 1px solid red; */
+ }
+
+ .top-container h1 {
+    font-size: 48px;
+    font-weight: bold;
  }
 
  .nav-bar ul {
@@ -32,6 +38,8 @@
     margin-left: 10px;
     margin-right: 10px;
     font-size: 24px;
+    color: white;
+    font-weight: bold;
 }
 
  .left-container {
@@ -40,7 +48,7 @@
     grid-column-end: 2;
     margin: 0 auto;
     overflow: auto;
-    border: 1px solid green;
+    /* border: 3px solid green; */
 }
 
 .left-container ul {
@@ -53,17 +61,20 @@
 }
 
 .train-btn {
+    margin-left: 20px;
+    margin-right: 20px;
     width: 250px;
     height: 100px;
+    color: white;
+    font-size: 16px;
 }
 
  .right-container {
     align-self: stretch;
     grid-column-start: 2;
     grid-column-end: 4;
-    border: 1px solid blue;
+    /* border: 1px solid blue; */
  }
-
 
 .right-container img {
     display: block;
