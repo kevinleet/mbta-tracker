@@ -34,9 +34,6 @@
     font-size: 24px;
 }
 
-
-
-
  .left-container {
     align-self: stretch;
     grid-column-start: 1;
@@ -59,6 +56,7 @@
     width: 250px;
     height: 100px;
 }
+
  .right-container {
     align-self: stretch;
     grid-column-start: 2;
@@ -67,11 +65,18 @@
  }
 
 
-
-
-
-
-
+.right-container img {
+    display: block;
+    width: 100%;
+    min-width: 400px;
+    min-height: 400px;
+    max-width: 600px;
+    max-height: 600px;
+    margin-top: 5%;
+    margin-left: auto;
+    margin-right: auto;
+    border: 1px solid black;
+}
 
 .center {
     margin: 0 auto;
