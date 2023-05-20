@@ -21,7 +21,6 @@ function renderMap() {
 }
 renderMap()
 
-
 // Add event listener for the nav bar elements that correspond to train colors. Reset and re-render map and train elements.
 $navList.on('click', 'button', async function() {
     map.remove()
@@ -32,8 +31,8 @@ $navList.on('click', 'button', async function() {
     let value = $(this).prop("value")
     let routeFilter = $(this).attr("route")
     let response = await axios.get(`https://api-v3.mbta.com/vehicles?api_key=${apiKey}&filter[route]=${routeFilter}`)
-    centerMap(value)
     parseTrainData(response, value)
+    renderPolyline(routeFilter, value)
 })
 
 // Add event listener to individual train buttons. On click, will center the map location of train selected
@@ -44,24 +43,6 @@ $trainList.on('click', 'button', function() {
     map.panTo([lat,lon], 16)
 })
 
-function centerMap(value){
-    switch (value) {
-        case 'green':
-            map.setView([42.35875537563385, -71.15634966546972], 12)
-            break
-        case 'red':
-            map.setView([42.33059658345831, -71.06459055987095], 11)
-            break
-        case 'orange':
-            map.setView([42.371022714547884, -71.07455908274449], 11)
-            break
-        case 'blue':
-            map.setView([42.38157511308042, -71.01471220741129], 12)
-            break
-    }
-    
-}
-
 // Function that destructures and assigns train data to previously declared variables
 async function parseTrainData(response, value) {
     let data = await response.data.data
@@ -69,7 +50,7 @@ async function parseTrainData(response, value) {
         let id = train.id
         let direction_id = train.attributes.direction_id
         let route_id = train.relationships.route.data.id
-        stop_id = train.relationships.stop?.data?.id
+        let stop_id = train.relationships.stop?.data?.id
         let stop_name = await getStopName(stop_id)
         let current_status = train.attributes.current_status
         let label = train.attributes.label
@@ -93,7 +74,6 @@ async function parseTrainData(response, value) {
         renderTrainButton(value, id, lat, lon, label, status, stop_name, direction_name)
         L.marker([lat,lon]).addTo(map).bindPopup(`${label} ${direction_name}bound</br>${status} ${stop_name}`)
     }
-    
 }
 
 // Function that renders a train button with arguments to assign button attributes and content
@@ -101,7 +81,7 @@ function renderTrainButton(value, id, lat, lon, label, status, stop_name, direct
     $trainList.append(`
     <li>
         <button class="train-btn ${value}" label="${label}" lat="${lat}" lon="${lon}">
-            #${label} ${direction_name}bound</br>${status}</br>${stop_name}
+            ${label} ${direction_name}bound</br>${status}</br>${stop_name}
         </button>
     </li>
     `)
@@ -125,4 +105,48 @@ async function getStopName(stop_id) {
     }
 }
 
+// Function to retrieve shapes data from API, call decode function to decode the raw data and plot it onto map
+async function renderPolyline(routeFilter, value) {
+    const response = await axios.get(`https://api-v3.mbta.com/shapes?api_key=${apiKey}&filter[route]=${routeFilter}`)
+    const data = response.data.data
+    let latlngs = []
+    for (const i in data) {
+        let polyraw = data[i].attributes.polyline
+        latlngs.push(decode(polyraw))
+    }
+    var polyline = L.polyline(latlngs, {color: `${value}`}).addTo(map)
+    map.fitBounds(polyline.getBounds())
+}
+
+// I found this function online that someone wrote to decode Google's Encoded Polyline Algorithm Format
+// https://gist.github.com/ismaels/6636986
+// Aside from paying for the Google Maps API, there was no other way to decode the decoded shapes data from API
+function decode(encoded){
+    var points=[ ]
+    var index = 0, len = encoded.length;
+    var lat = 0, lng = 0;
+    while (index < len) {
+        var b, shift = 0, result = 0;
+        do {
+    b = encoded.charAt(index++).charCodeAt(0) - 63;//finds ascii                                                                                    //and substract it by 63
+              result |= (b & 0x1f) << shift;
+              shift += 5;
+             } while (b >= 0x20);
+    var dlat = ((result & 1) != 0 ? ~(result >> 1) : (result >> 1));
+    lat += dlat;
+    shift = 0;
+    result = 0;
+     do {
+        b = encoded.charAt(index++).charCodeAt(0) - 63;
+        result |= (b & 0x1f) << shift;
+        shift += 5;
+    } while (b >= 0x20);
+     var dlng = ((result & 1) != 0 ? ~(result >> 1) : (result >> 1));
+     lng += dlng;
+     points.push([( lat / 1E5),( lng / 1E5)])  
+  }
+  return points
+}
+
 $greenBtn.click()
+
