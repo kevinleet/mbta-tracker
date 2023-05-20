@@ -1,4 +1,4 @@
- .grid-container {
+.grid-container {
     margin: 0 auto;
     height: 800px;
     min-width: 800px;
@@ -8,14 +8,12 @@
     grid-template-rows: 180px 600px;
     font-family: 'Helvetica';
     margin-top: 30px;
-    /* border: 1px solid black; */
  }
 
  .top-container {
     align-self: stretch;
     grid-column-start: 1;
     grid-column-end: 5;
-    /* border: 1px solid red; */
  }
 
  .top-container h1 {
@@ -50,8 +48,6 @@
     grid-column-end: 2;
     margin: 0 auto;
     overflow: auto;
-    /* display: none; */
-    /* border: 3px solid green; */
 }
 
 .left-container ul {
@@ -77,7 +73,6 @@
     grid-column-start: 2;
     grid-column-end: 5;
     margin-left: 20px;
-    /* border: 1px solid blue; */
  }
 
 .center {
