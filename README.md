@@ -13,4 +13,5 @@ Link to Trello [https://trello.com/b/p2aaoudT/mbta-tracker]
 ## Credits
 - MBTA V3 API
 - MapQuest.js SDK
-- Leaflet JS Library Documentation
+- Leaflet JS Library Documentation [https://leafletjs.com/index.html]
+- Wikipedia Commons for MBTA Icons [https://commons.wikimedia.org/wiki/Category:MBTA_icons]

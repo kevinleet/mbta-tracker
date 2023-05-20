@@ -11,6 +11,10 @@ let $rightContainer = $('.right-container')
 let $map = $('#map')
 
 let map;
+let myIcon = L.icon({
+    iconUrl: 'images/gl.png',
+    iconSize:[25,25]
+})
 function renderMap() {
     map = L.mapquest.map('map', {
         center: [42.3554334, -71.060511],
@@ -72,7 +76,7 @@ async function parseTrainData(response, value) {
                 return
         }
         renderTrainButton(value, id, lat, lon, label, status, stop_name, direction_name)
-        L.marker([lat,lon]).addTo(map).bindPopup(`${label} ${direction_name}bound</br>${status} ${stop_name}`)
+        L.marker([lat,lon], {icon: L.icon({iconUrl: `images/${route_id}.png`, iconSize:[25,25]})}).addTo(map).bindPopup(`${label} ${direction_name}bound</br>${status} ${stop_name}`)
     }
 }
 
