@@ -36,6 +36,7 @@ $navList.on('click', 'button', async function() {
     let routeFilter = $(this).attr("route")
     let response = await axios.get(`https://api-v3.mbta.com/vehicles?api_key=${apiKey}&filter[route]=${routeFilter}`)
     parseTrainData(response, value)
+    renderStopMarkers(routeFilter)
     renderPolyline(routeFilter, value)
 })
 
@@ -106,6 +107,18 @@ async function getStopName(stop_id) {
     } else {
         let response = await axios.get(`https://api-v3.mbta.com/stops/${stop_id}?api_key=${apiKey}`)
         return response.data.data.attributes.name
+    }
+}
+
+// Function to retrieve stop information, place markers for each stop
+async function renderStopMarkers(routeFilter) {
+    const response = await axios.get(`https://api-v3.mbta.com/stops?api_key=${apiKey}&filter[route]=${routeFilter}`)
+    const data = response.data.data
+    for (const stop of data) {
+       let lat = stop.attributes.latitude
+       let lon = stop.attributes.longitude
+       let name = stop.attributes.name
+       L.marker([lat,lon], {icon: L.icon({iconUrl: `images/circle.png`, iconSize:[10,10]}), zIndexOffset: -100}).addTo(map).bindPopup(`${name}`)
     }
 }
 

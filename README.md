@@ -11,7 +11,7 @@ Link to Trello [https://trello.com/b/p2aaoudT/mbta-tracker]
 - Users may select a specific subway car to view the real-time location of that subway car
 
 ## Credits
-- MBTA V3 API
-- MapQuest.js SDK
+- MBTA V3 API [https://www.mbta.com/developers/v3-api]
+- MapQuest.js SDK [https://developer.mapquest.com/documentation/mapquest-js/v1.3/]
 - Leaflet JS Library Documentation [https://leafletjs.com/index.html]
 - Wikipedia Commons for MBTA Icons [https://commons.wikimedia.org/wiki/Category:MBTA_icons]
