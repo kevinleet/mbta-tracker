@@ -32,6 +32,7 @@ $navList.on('click', 'button', async function() {
     let value = $(this).prop("value")
     let routeFilter = $(this).attr("route")
     let response = await axios.get(`https://api-v3.mbta.com/vehicles?api_key=${apiKey}&filter[route]=${routeFilter}`)
+    centerMap(value)
     parseTrainData(response, value)
 })
 
@@ -43,6 +44,24 @@ $trainList.on('click', 'button', function() {
     map.panTo([lat,lon], 16)
 })
 
+function centerMap(value){
+    switch (value) {
+        case 'green':
+            map.setView([42.35875537563385, -71.15634966546972], 12)
+            break
+        case 'red':
+            map.setView([42.33059658345831, -71.06459055987095], 11)
+            break
+        case 'orange':
+            map.setView([42.371022714547884, -71.07455908274449], 11)
+            break
+        case 'blue':
+            map.setView([42.38157511308042, -71.01471220741129], 12)
+            break
+    }
+    
+}
+
 // Function that destructures and assigns train data to previously declared variables
 async function parseTrainData(response, value) {
     let data = await response.data.data
@@ -52,7 +71,6 @@ async function parseTrainData(response, value) {
         let route_id = train.relationships.route.data.id
         stop_id = train.relationships.stop?.data?.id
         let stop_name = await getStopName(stop_id)
-        console.log(stop_id)
         let current_status = train.attributes.current_status
         let label = train.attributes.label
         let lat = train.attributes.latitude
@@ -75,6 +93,7 @@ async function parseTrainData(response, value) {
         renderTrainButton(value, id, lat, lon, label, status, stop_name, direction_name)
         L.marker([lat,lon]).addTo(map).bindPopup(`${label} ${direction_name}bound</br>${status} ${stop_name}`)
     }
+    
 }
 
 // Function that renders a train button with arguments to assign button attributes and content
