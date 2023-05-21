@@ -62,34 +62,45 @@ async function parseTrainData(response, value) {
         let lat = train.attributes.latitude
         let lon = train.attributes.longitude
         let direction_name = await getDirectionName(direction_id, route_id)
+        let prediction = ''
         let status = ''
         switch (current_status) {
             case 'STOPPED_AT':
                 status += "Stopped At"
                 break
             case 'INCOMING_AT':
-                status += "Incoming At "
+                status += "Arriving At"
                 break
             case 'IN_TRANSIT_TO':
                 status += "In Transit To"
+                let minutes = await getPrediction(stop_id, id)
+                if (minutes == 1) {
+                    prediction = `Arriving in ${minutes} minute.`
+                } else if (minutes > 1) {
+                    prediction = `Arriving in ${minutes} minutes.`
+                }
                 break
             default:
                 return
         }
-        renderTrainButton(value, id, lat, lon, label, status, stop_name, direction_name)
-        L.marker([lat,lon], {icon: L.icon({iconUrl: `images/${route_id}.png`, iconSize:[25,25]})}).addTo(map).bindPopup(`${label} ${direction_name}bound</br>${status} ${stop_name}`)
+        L.marker([lat,lon], {icon: L.icon({iconUrl: `images/${route_id}.png`, iconSize:[25,25]})}).addTo(map).bindPopup(`${label} ${direction_name}bound</br>${status} ${stop_name}</br>${prediction}`)
+        $trainList.append(`<li><button class="train-btn ${value}" label="${label}" lat="${lat}" lon="${lon}">${label} ${direction_name}bound</br>${status}</br>${stop_name}</br>${prediction}</button></li>`)
     }
 }
 
-// Function that renders a train button with arguments to assign button attributes and content
-function renderTrainButton(value, id, lat, lon, label, status, stop_name, direction_name) {
-    $trainList.append(`
-    <li>
-        <button class="train-btn ${value}" label="${label}" lat="${lat}" lon="${lon}">
-            ${label} ${direction_name}bound</br>${status}</br>${stop_name}
-        </button>
-    </li>
-    `)
+// Function that queries the MBTA API for prediction information, and calculates time difference in minutes
+async function getPrediction(stop_id, id) {
+    const response = await axios.get(`https://api-v3.mbta.com/predictions?api_key=${apiKey}&filter[stop]=${stop_id}`)
+    const data = response.data.data
+    for (const prediction of data) {
+        if (prediction.relationships.vehicle.data.id == id) {
+            let arrival_time = prediction.attributes.arrival_time
+            let arrival = new Date(arrival_time).getTime()
+            let now = new Date().getTime()
+            let minutes_to_arrival = Math.round((arrival-now) / 60000)
+            return Math.round(minutes_to_arrival)
+        }
+    }
 }
 
 // Function that retrieves direction name when given direction_id and route_id as arguments
@@ -145,7 +156,7 @@ function decode(encoded){
     while (index < len) {
         var b, shift = 0, result = 0;
         do {
-    b = encoded.charAt(index++).charCodeAt(0) - 63;//finds ascii                                                                                    //and substract it by 63
+    b = encoded.charAt(index++).charCodeAt(0) - 63;
               result |= (b & 0x1f) << shift;
               shift += 5;
              } while (b >= 0x20);
