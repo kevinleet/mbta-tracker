@@ -10,6 +10,7 @@ let $leftContainer = $('.left-container')
 let $rightContainer = $('.right-container')
 let $map = $('#map')
 
+// Initialize map settings and render map
 let map;
 let myIcon = L.icon({
     iconUrl: 'images/gl.png',
@@ -53,15 +54,15 @@ async function parseTrainData(response, value) {
     let data = await response.data.data
     for (const train of data) {
         let id = train.id
-        let direction_id = train.attributes.direction_id
-        let route_id = train.relationships.route.data.id
-        let stop_id = train.relationships.stop?.data?.id
-        let stop_name = await getStopName(stop_id)
+        let directionId = train.attributes.direction_id
+        let routeId = train.relationships.route.data.id
+        let stopId = train.relationships.stop?.data?.id
+        let stopName = await getStopName(stopId)
         let current_status = train.attributes.current_status
         let label = train.attributes.label
         let lat = train.attributes.latitude
         let lon = train.attributes.longitude
-        let direction_name = await getDirectionName(direction_id, route_id)
+        let directionName = await getDirectionName(directionId, routeId)
         let prediction = ''
         let status = ''
         switch (current_status) {
@@ -73,7 +74,7 @@ async function parseTrainData(response, value) {
                 break
             case 'IN_TRANSIT_TO':
                 status += "In Transit To"
-                let minutes = await getPrediction(stop_id, id)
+                let minutes = await getPrediction(stopId, id)
                 if (minutes == 1) {
                     prediction = `Arriving in ${minutes} minute.`
                 } else if (minutes > 1) {
@@ -83,40 +84,40 @@ async function parseTrainData(response, value) {
             default:
                 return
         }
-        L.marker([lat,lon], {icon: L.icon({iconUrl: `images/${route_id}.png`, iconSize:[25,25]})}).addTo(map).bindPopup(`${label} ${direction_name}bound</br>${status} ${stop_name}</br>${prediction}`)
-        $trainList.append(`<li><button class="train-btn ${value}" label="${label}" lat="${lat}" lon="${lon}">${label} ${direction_name}bound</br>${status}</br>${stop_name}</br>${prediction}</button></li>`)
+        L.marker([lat,lon], {icon: L.icon({iconUrl: `images/${routeId}.png`, iconSize:[25,25]})}).addTo(map).bindPopup(`${label} ${directionName}bound</br>${status} ${stopName}</br>${prediction}`)
+        $trainList.append(`<li><button class="train-btn ${value}" label="${label}" lat="${lat}" lon="${lon}">${label} ${directionName}bound</br>${status}</br>${stopName}</br>${prediction}</button></li>`)
     }
 }
 
 // Function that queries the MBTA API for prediction information, and calculates time difference in minutes
-async function getPrediction(stop_id, id) {
-    const response = await axios.get(`https://api-v3.mbta.com/predictions?api_key=${apiKey}&filter[stop]=${stop_id}`)
+async function getPrediction(stopId, id) {
+    const response = await axios.get(`https://api-v3.mbta.com/predictions?api_key=${apiKey}&filter[stop]=${stopId}`)
     const data = response.data.data
     for (const prediction of data) {
         if (prediction.relationships.vehicle.data.id == id) {
-            let arrival_time = prediction.attributes.arrival_time
-            let arrival = new Date(arrival_time).getTime()
+            let arrivalTime = prediction.attributes.arrival_time
+            let arrival = new Date(arrivalTime).getTime()
             let now = new Date().getTime()
-            let minutes_to_arrival = Math.round((arrival-now) / 60000)
-            return Math.round(minutes_to_arrival)
+            let minutesToArrival = Math.round((arrival-now) / 60000)
+            return Math.round(minutesToArrival)
         }
     }
 }
 
-// Function that retrieves direction name when given direction_id and route_id as arguments
-async function getDirectionName(direction_id, route_id) {
-    let response = await axios.get(`https://api-v3.mbta.com/routes?api_key=${apiKey}&filter[id]=${route_id}&filter[direction_id]=${direction_id}`)
-    return response.data.data[0].attributes.direction_names[direction_id]
+// Function that retrieves direction name when given directionId and routeId as arguments
+async function getDirectionName(directionId, routeId) {
+    let response = await axios.get(`https://api-v3.mbta.com/routes?api_key=${apiKey}&filter[id]=${routeId}&filter[direction_id]=${directionId}`)
+    return response.data.data[0].attributes.direction_names[directionId]
 }
 
 // Function that retrieves stop name when given stop id as an argument
-async function getStopName(stop_id) {
-    if (stop_id == "Union Square-01" || stop_id == "Union Square-02") {
+async function getStopName(stopId) {
+    if (stopId == "Union Square-01" || stopId == "Union Square-02") {
         return "Union Square"
-    } else if (stop_id == undefined) {
+    } else if (stopId == undefined) {
         return ''
     } else {
-        let response = await axios.get(`https://api-v3.mbta.com/stops/${stop_id}?api_key=${apiKey}`)
+        let response = await axios.get(`https://api-v3.mbta.com/stops/${stopId}?api_key=${apiKey}`)
         return response.data.data.attributes.name
     }
 }
@@ -150,7 +151,7 @@ async function renderPolyline(routeFilter, value) {
 // https://gist.github.com/ismaels/6636986
 // Aside from paying for the Google Maps API, there was no other way to decode the decoded shapes data from API
 function decode(encoded){
-    var points=[ ]
+    var points = []
     var index = 0, len = encoded.length;
     var lat = 0, lng = 0;
     while (index < len) {
@@ -177,4 +178,3 @@ function decode(encoded){
 }
 
 $greenBtn.click()
-
