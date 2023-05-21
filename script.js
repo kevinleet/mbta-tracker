@@ -32,7 +32,7 @@ $navList.on('click', 'button', async function() {
     renderMap()
     $trainList.empty()
     let hex = $(this).attr("hex")
-    $leftContainer.css("border", `3px solid ${hex}`)
+    // $leftContainer.css("border", `3px solid ${hex}`)
     let value = $(this).prop("value")
     let routeFilter = $(this).attr("route")
     let response = await axios.get(`https://api-v3.mbta.com/vehicles?api_key=${apiKey}&filter[route]=${routeFilter}`)
