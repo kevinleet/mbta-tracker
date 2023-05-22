@@ -208,6 +208,7 @@ async function handleSubmit() {
     L.marker([lat,lng]).addTo(map).bindPopup(`${value}</br>Lat: ${lat}, Long: ${lng}`)
     map.setView([lat,lng], 16)
     locationArr.push([lat,lng,value])
+    $inputBar.prop("value", '')
 }
 
 // Function to plot all coordinates in location array when selecting new lines
