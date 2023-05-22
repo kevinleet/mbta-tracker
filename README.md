@@ -1,7 +1,7 @@
 # MBTA Tracker
 
 ## Description
-This project will create an MBTA Tracker webpage that allows the user to view real-time data of MBTA subway cars. Users will be able to filter by each individual MBTA line, and information will populate in the sidebar about each subway car on the selected line. A map will be displayed that will add markers for every train on a selected line. Users will also be able to click on a specific subway car and the map will center on the selected train car.
+This project will create an MBTA Tracker webpage that allows the user to view real-time data of MBTA subway cars. Users will be able to filter by each individual MBTA line, and information will populate in the sidebar about each subway car on the selected line. A map will be displayed that will add markers for every train on a selected line, as well as markers for every station on the selected line. Users will also be able to click on a specific subway car and the map will center on the selected train car.
 
 Link to Trello [https://trello.com/b/p2aaoudT/mbta-tracker]
 
