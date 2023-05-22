@@ -8,10 +8,13 @@ let $blueBtn = $('#blue-btn')
 let $trainList = $('#train-list')
 let $leftContainer = $('.left-container')
 let $rightContainer = $('.right-container')
+let $inputBar = $('#input-bar')
+let $submit = $('#submit')
 let $map = $('#map')
 
 // Initialize map settings and render map
 let map;
+let locationArr = []
 let myIcon = L.icon({
     iconUrl: 'images/gl.png',
     iconSize:[25,25]
@@ -34,6 +37,7 @@ $navList.on('click', 'button', async function() {
     let value = $(this).prop("value")
     let routeFilter = $(this).attr("route")
     let response = await axios.get(`https://api-v3.mbta.com/vehicles?api_key=${apiKey}&filter[route]=${routeFilter}`)
+    plotLocationArr()
     parseTrainData(response, value)
     renderStopMarkers(routeFilter)
     renderPolyline(routeFilter, value)
@@ -174,5 +178,39 @@ function decode(encoded){
   }
   return points
 }
+
+// Event listener for the enter key on input element, call handlesubmit function
+$inputBar.on('keydown', (e) => {
+    if (e.keyCode == 13) {
+        handleSubmit()
+    }
+})
+
+// Event listener for submit button, call handlesubmit function
+$submit.on('click', () => {
+    handleSubmit()
+})
+
+// Function to call mapquest API with input string, extract coordinates from response and add marker and push to location arr
+async function handleSubmit() {
+    let value = $inputBar.prop("value")
+    if (!value){ return }
+    let response = await axios.get(`https://www.mapquestapi.com/geocoding/v1/address?key=${L.mapquest.key}&location=${value}`)
+    let lat = response.data.results[0].locations[0].latLng.lat
+    let lng = response.data.results[0].locations[0].latLng.lng
+    L.marker([lat,lng]).addTo(map);
+    map.setView([lat,lng], 16)
+    locationArr.push([lat,lng])
+}
+
+// Function to plot all coordinates in location array when selecting new lines
+function plotLocationArr() {
+    if (locationArr.length > 0) {
+        for (latlng of locationArr) {
+            L.marker(latlng).addTo(map);
+        }
+    }
+}
+
 
 $greenBtn.click()

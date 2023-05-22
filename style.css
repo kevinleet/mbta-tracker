@@ -95,6 +95,36 @@
     margin-right: 10px;
  }
 
+ .address {
+    margin-left: 10px;
+    background-color: #165C96;
+    width: 90%;
+    padding-top: 10px;
+    padding-bottom: 10px;
+    padding-left: 5px;
+    padding-right: 5px;
+    border-radius: 10px;
+    text-align: center;
+ }
+
+ .address label {
+    color: white;
+ }
+
+ .address input {
+    margin-left: 5px;
+    padding: 7px;
+    width: 40%
+ }
+ 
+ .address button {
+    margin-left: 5px;
+    padding: 5px;
+    background-color: white;
+    letter-spacing: 2px;
+    font-weight: bold;
+    color:#165C96
+ }
 .center {
     margin: 0 auto;
     text-align: center;
@@ -132,8 +162,7 @@
     .grid-container {
         grid-template-rows: 140px 550px;
         grid-template-columns: 1fr 1fr 1fr 1fr;
-        height: 600px;
-        /* width: 600px; */
+        height: 630px;
         margin-top: 0px;
     }
 
@@ -182,11 +211,29 @@
         margin-top: 0px;
         margin-left: 0px;
     }
+    
+    .address {
+        height: 30px;
+        width: 60%
+    }    
+
+    .address label {
+        display: none;
+    }
+
+    .address input {
+        width: 90%;
+        margin-left: 0px;
+    }
+
+    .address button {
+        display: none
+    }
 
     #map {
-        margin-top: 0px;
+        margin-top: 10px;
         margin-left: 0px;
         width: 65%;
-        height: 450px;
+        height: 420px;
     }
 }
