@@ -1,5 +1,6 @@
 L.mapquest.key = 'IFutcz97fDjINJ1QeUpcmgVDzFLIDfex';
 let apiKey = 'b2aaa7561cc145a5b412d187b054ba79'
+let $h1 = $('h1')
 let $navList = $('#nav-list')
 let $greenBtn = $('#green-btn')
 let $redBtn = $('#red-btn')
@@ -28,6 +29,12 @@ function renderMap() {
         map.addControl(L.mapquest.control())
 }
 renderMap()
+
+// Add event listener that resets the page when clicking on the H1 element at the top of the page
+$h1.on('click', () => {
+    locationArr = []
+    $greenBtn.click()
+})
 
 // Add event listener for the nav bar elements that correspond to train colors. Reset and re-render map and train elements.
 $navList.on('click', 'button', async function() {

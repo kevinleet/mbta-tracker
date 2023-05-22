@@ -27,6 +27,10 @@
     letter-spacing: 8px;
  }
 
+ .top-container h1:hover {
+    cursor: pointer;
+ }
+
  .nav-bar ul {
     list-style: none;
     height: auto;
@@ -50,6 +54,7 @@
 
 .nav-bar button:hover {
     text-decoration: underline;
+    cursor: pointer;
 }
 
  .left-container {
@@ -85,6 +90,7 @@
 
 .train-btn:hover {
     text-decoration: underline;
+    cursor: pointer;
 }
 
  .right-container {
