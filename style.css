@@ -83,6 +83,10 @@
     border-radius: 10px;
 }
 
+.train-btn:hover {
+    text-decoration: underline;
+}
+
  .right-container {
     align-self: stretch;
     grid-column-start: 2;
@@ -112,21 +116,44 @@
     background-color: #2f5da6;
 }
 
+.footer {
+    grid-column-start: 1;
+    grid-column-end: 5;
+}
+
 #map {
     width: 100%;
     height:  530px;
     margin-top: 30px;
 }
 
+
 @media only screen and (max-width: 915px) {
     .grid-container {
         grid-template-rows: 140px 550px;
+        grid-template-columns: 1fr 1fr 1fr 1fr;
+        height: 600px;
+        /* width: 600px; */
         margin-top: 0px;
     }
-    
-    .train-btn {
-        font-size: 12px;
-        height: 60px
+
+    .top-container {
+        grid-column-start: 1;
+        grid-column-end: 5;
+    }
+
+    .top-container h1 {
+        padding-top: 5px;
+        padding-bottom: 5px;
+        padding-left: 150px;
+        font-size: 30px;
+        text-align: left;
+    }
+
+    .top-container h4  {
+        font-size: 10px;
+        float: left;
+        margin-top: 5px;
     }
 
     .nav-bar button {
@@ -134,27 +161,32 @@
         height: 40px;
         font-size: 14px;
         border-radius: 10px;
-    }
-
-    .top-container h1 {
-        padding-top: 5px;
-        padding-bottom: 5px;
-        font-size: 24px;
-    }
-
-    .top-container h4  {
-        font-size: 10px;
+        margin-left: 5px;
+        margin-right: 5px;
+        float: left;
     }
 
     .left-container {
         margin-top: 0px;
+        width: 100%;
+        border: none;
+        height: 450px;
+    }
+    .train-btn {
+        font-size: 10px;
+        height: 60px;
+        margin-left: 0px;
     }
 
     .right-container {
         margin-top: 0px;
+        margin-left: 0px;
     }
 
     #map {
         margin-top: 0px;
+        margin-left: 0px;
+        width: 65%;
+        height: 450px;
     }
 }
