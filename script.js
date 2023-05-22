@@ -34,10 +34,10 @@ $navList.on('click', 'button', async function() {
     map.remove()
     renderMap()
     $trainList.empty()
+    plotLocationArr()
     let value = $(this).prop("value")
     let routeFilter = $(this).attr("route")
     let response = await axios.get(`https://api-v3.mbta.com/vehicles?api_key=${apiKey}&filter[route]=${routeFilter}`)
-    plotLocationArr()
     parseTrainData(response, value)
     renderStopMarkers(routeFilter)
     renderPolyline(routeFilter, value)
@@ -198,19 +198,18 @@ async function handleSubmit() {
     let response = await axios.get(`https://www.mapquestapi.com/geocoding/v1/address?key=${L.mapquest.key}&location=${value}`)
     let lat = response.data.results[0].locations[0].latLng.lat
     let lng = response.data.results[0].locations[0].latLng.lng
-    L.marker([lat,lng]).addTo(map);
+    L.marker([lat,lng]).addTo(map).bindPopup(`${value}</br>Lat: ${lat}, Long: ${lng}`)
     map.setView([lat,lng], 16)
-    locationArr.push([lat,lng])
+    locationArr.push([lat,lng,value])
 }
 
 // Function to plot all coordinates in location array when selecting new lines
 function plotLocationArr() {
     if (locationArr.length > 0) {
         for (latlng of locationArr) {
-            L.marker(latlng).addTo(map);
+            L.marker(latlng).addTo(map).bindPopup(`${latlng[2]}</br>Lat: ${latlng[0]}, Long: ${latlng[1]}`)
         }
     }
 }
-
 
 $greenBtn.click()
