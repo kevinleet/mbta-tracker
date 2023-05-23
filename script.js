@@ -63,6 +63,7 @@ $trainList.on('click', 'button', function() {
 
 // Function that destructures and assigns train data to previously declared variables
 async function parseTrainData(response, value) {
+    $trainCount.text("")
     let data = await response.data.data
     for (const train of data) {
         let id = train.id

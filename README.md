@@ -1,14 +1,32 @@
 # MBTA Tracker
 
 ## Description
-This project will create an MBTA Tracker webpage that allows the user to view real-time data of MBTA subway cars. Users will be able to filter by each individual MBTA line, and information will populate in the sidebar about each subway car on the selected line. A map will be displayed that will add markers for every train on a selected line, as well as markers for every station on the selected line. Users will also be able to click on a specific subway car and the map will center on the selected train car.
+This web application queries data from the MBTA V3 API and plots positions of routes, trains and stops on a map that is powered by the MapQuest.js SDK.
 
-Link to Trello [https://trello.com/b/p2aaoudT/mbta-tracker]
+The /vehicles endpoint of the MBTA V3 API can be queried with a route filter to return information about all trains on a given route. This application allows users to select between the Green Lines (B, C, D, E), Red Line, Orange Line, Blue Line, and Commuter Rail. 
 
-## Instructions
-- Users will select a subway line at the top of the page by clicking on the button that corresponds to the line that the user would like to view data on
-- After selecting a line, users can view all of the active subway cars on a window on the left side of the page.
-- Users may select a specific subway car to view the real-time location of that subway car
+Once a route is selected, the sidebar on the left side of the page will populate vertically with a button for each active train on the selected line.
+
+These sidebar buttons will contain the following information:
+- train number
+- direction (e.g. inbound/outbound, northbound/southbound)
+- current status (e.g. stopped, in transit to, arriving at)
+- the station that the status is referring to (will always be the current station if stopped, or the next station if in transit)
+- estimated minutes until arrival at next station (will display only if information is available via the /predictions endpoint)
+
+In addition to the populating of the sidebar with train buttons, the displayed map will also plot the following:
+- train routes (rendered as one continuous line)
+- train stops (rendered as small white circle icons, on-click tooltip will display the name of the stop)
+- active trains (rendered as circular icons with text indication the line, on-click tooltip will display train information)
+
+Above the displayed map is an input field that allows users to input a location (address, zip code, or coordinates) and a marker corresponding to
+that location will be rendered on the map, and the map will pan and center to that marker. Users are able to add multiple markers to the map and the markers will remain on the map even when selecting between the different lines.
+
+## Development Process
+
+## Resources
+GitHub Repo [https://github.com/kevinleet/mbtatracker]
+Trello [https://trello.com/b/p2aaoudT/mbta-tracker]
 
 ## Credits
 - MBTA V3 API [https://www.mbta.com/developers/v3-api]
