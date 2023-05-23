@@ -6,6 +6,7 @@ let $greenBtn = $('#green-btn')
 let $redBtn = $('#red-btn')
 let $orangeBtn = $('#orange-btn')
 let $blueBtn = $('#blue-btn')
+let $purpleBtn = $('#purple-btn')
 let $trainList = $('#train-list')
 let $leftContainer = $('.left-container')
 let $rightContainer = $('.right-container')
@@ -93,8 +94,13 @@ async function parseTrainData(response, value) {
             default:
                 return
         }
-        L.marker([lat,lon], {icon: L.icon({iconUrl: `images/${routeId}.png`, iconSize:[25,25]})}).addTo(map).bindPopup(`${label} ${directionName}bound</br>${status} ${stopName}</br>${prediction}`)
-        $trainList.append(`<li><button class="train-btn ${value}" label="${label}" lat="${lat}" lon="${lon}">${label} ${directionName}bound</br>${status}</br>${stopName}</br>${prediction}</button></li>`)
+        if (value == 'purple') {
+            L.marker([lat,lon], {icon: L.icon({iconUrl: `images/CR.png`, iconSize:[25,25]})}).addTo(map).bindPopup(`${label} ${directionName}</br>${status} ${stopName}</br>${prediction}`)
+            $trainList.append(`<li><button class="train-btn ${value}" label="${label}" lat="${lat}" lon="${lon}">${label} ${directionName}</br>${status}</br>${stopName}</br>${prediction}</button></li>`)
+        } else {
+            L.marker([lat,lon], {icon: L.icon({iconUrl: `images/${routeId}.png`, iconSize:[25,25]})}).addTo(map).bindPopup(`${label} ${directionName}bound</br>${status} ${stopName}</br>${prediction}`)
+            $trainList.append(`<li><button class="train-btn ${value}" label="${label}" lat="${lat}" lon="${lon}">${label} ${directionName}bound</br>${status}</br>${stopName}</br>${prediction}</button></li>`)
+        }
     }
 }
 
@@ -103,13 +109,20 @@ async function getPrediction(stopId, id) {
     const response = await axios.get(`https://api-v3.mbta.com/predictions?api_key=${apiKey}&filter[stop]=${stopId}`)
     const data = response.data.data
     for (const prediction of data) {
-        if (prediction.relationships.vehicle.data.id == id) {
-            let arrivalTime = prediction.attributes.arrival_time
-            let arrival = new Date(arrivalTime).getTime()
-            let now = new Date().getTime()
-            let minutesToArrival = Math.round((arrival-now) / 60000)
-            return Math.round(minutesToArrival)
+        try {
+            if (prediction.relationships.vehicle.data.id == id) {
+                let arrivalTime = prediction.attributes.arrival_time
+                let arrival = new Date(arrivalTime).getTime()
+                let now = new Date().getTime()
+                let minutesToArrival = Math.round((arrival-now) / 60000)
+                return Math.round(minutesToArrival)
+            } else {
+                return
+            }
+        } catch (e) {
+            console.log(e)
         }
+
     }
 }
 

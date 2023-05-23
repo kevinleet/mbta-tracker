@@ -6,7 +6,7 @@
         max-width: 1200px;
         display: grid;
         grid-template-columns: 220px 1fr 1fr 1fr;
-        grid-template-rows: 220px 650px;
+        grid-template-rows: 200px 650px;
         font-family: 'Helvetica';
         margin-top: 30px;
         background-color: #F2F3F5;
@@ -36,6 +36,8 @@
         list-style: none;
         height: auto;
         padding-left: 0px;
+        margin-top: 10px;
+        margin-bottom: 10px;
     }
     
     .nav-bar li {
@@ -51,6 +53,7 @@
         color: white;
         font-weight: bold;
         border-radius: 20px;
+        
     }
     
     .nav-bar button:hover {
@@ -154,6 +157,9 @@
     .blue {
         background-color: #2f5da6;
     }
+    .purple {
+        background-color: #7b388c;
+    }
     
     .footer {
         grid-column-start: 1;
@@ -168,6 +174,10 @@
         width: 100%;
         height:  530px;
         margin-top: 30px;
+    }
+
+    #purple-btn {
+        width: 190px;
     }
 }
 
@@ -336,6 +346,10 @@
     .blue {
         background-color: #2f5da6;
     }
+
+    .purple {
+        background-color: #7b388c;
+    }
     
     .footer {
         grid-column-start: 1;
@@ -350,6 +364,10 @@
         width: 100%;
         height:  530px;
         margin-top: 10px;
+    }
+
+    #purple-btn {
+        width: 120px;
     }
 }
 
@@ -406,11 +424,11 @@
     }
     
     .nav-bar button {
-        width: 80px;
+        width: 60px;
         height: 30px;
-        margin-left: 5px;
-        margin-right: 5px;
-        font-size: 10px;
+        margin-left: 1px;
+        margin-right: 1px;
+        font-size: 7px;
         color: white;
         font-weight: bold;
         border-radius: 20px;
@@ -519,6 +537,10 @@
     .blue {
         background-color: #2f5da6;
     }
+
+    .purple {
+        background-color: #7b388c;
+    }
     
     .footer {
         grid-column-start: 1;
@@ -533,5 +555,9 @@
         width: 100%;
         height:  530px;
         margin-top: 10px;
+    }
+
+    #purple-btn {
+        width: 70px;
     }
 }
