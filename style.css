@@ -1,253 +1,537 @@
-.grid-container {
-    margin: 0 auto;
-    height: 900px;
-    min-width: 800px;
-    max-width: 1280px;
-    display: grid;
-    grid-template-columns: 1fr 1fr 1fr 1fr;
-    grid-template-rows: 220px 650px;
-    font-family: 'Helvetica';
-    margin-top: 30px;
-    background-color: #F2F3F5;
- }
-
- .top-container {
-    align-self: stretch;
-    grid-column-start: 1;
-    grid-column-end: 5;
- }
-
- .top-container h1 {
-    font-size: 48px;
-    font-weight: 600;
-    background-color: #165C96;
-    padding-top: 15px;
-    padding-bottom: 15px;
-    color: whitesmoke;
-    letter-spacing: 8px;
- }
-
- .top-container h1:hover {
-    cursor: pointer;
- }
-
- .nav-bar ul {
-    list-style: none;
-    height: auto;
-    padding-left: 0px;
-}
-
-.nav-bar li {
-    display: inline;
-}
-
-.nav-bar button {
-    width: 160px;
-    height: 60px;
-    margin-left: 10px;
-    margin-right: 10px;
-    font-size: 24px;
-    color: white;
-    font-weight: bold;
-    border-radius: 20px;
-}
-
-.nav-bar button:hover {
-    text-decoration: underline;
-    cursor: pointer;
-}
-
- .left-container {
-    width: 100%;
-    align-self: stretch;
-    grid-column-start: 1;
-    grid-column-end: 2;
-    margin: 0 auto;
-    overflow: auto;
-    border: 5px solid #165C96;
-    margin-left: 10px;
-}
-
-.left-container ul {
-    list-style: none;
-    padding-left: 0px;
-}
-
-.left-container li {
-    margin-top: 10px;
-    text-align: center
-}
-
-.train-btn {
-    margin-left: 20px;
-    margin-right: 20px;
-    width: 80%;
-    height: 80px;
-    color: white;
-    font-size: 16px;
-    border-radius: 10px;
-}
-
-.train-btn:hover {
-    text-decoration: underline;
-    cursor: pointer;
-}
-
- .right-container {
-    align-self: stretch;
-    grid-column-start: 2;
-    grid-column-end: 5;
-    margin-left: 30px;
-    margin-right: 10px;
- }
-
- .address {
-    margin-left: 10px;
-    background-color: #165C96;
-    width: 90%;
-    padding-top: 10px;
-    padding-bottom: 10px;
-    padding-left: 5px;
-    padding-right: 5px;
-    border-radius: 10px;
-    text-align: center;
- }
-
- .address label {
-    color: white;
- }
-
- .address input {
-    margin-left: 5px;
-    padding: 7px;
-    width: 40%
- }
- 
- .address button {
-    margin-left: 5px;
-    padding: 5px;
-    background-color: white;
-    letter-spacing: 2px;
-    font-weight: bold;
-    color:#165C96
- }
-.center {
-    margin: 0 auto;
-    text-align: center;
-}
-
-.green {
-    background-color: #008150;
-}
-
-.red {
-    background-color: #fa2d27;
-}
-
-.orange {
-    background-color: #fd8a03;
-}
-
-.blue {
-    background-color: #2f5da6;
-}
-
-.footer {
-    grid-column-start: 1;
-    grid-column-end: 5;
-}
-
-#map {
-    width: 100%;
-    height:  530px;
-    margin-top: 30px;
-}
-
-@media only screen and (max-width: 915px) {
+@media only screen and (min-width: 1200px) {
     .grid-container {
-        grid-template-rows: 140px 550px;
-        grid-template-columns: 1fr 1fr 1fr 1fr;
-        height: 630px;
-        margin-top: 0px;
+        margin: 0 auto;
+        height: 900px;
+        min-width: 900px;
+        max-width: 1200px;
+        display: grid;
+        grid-template-columns: 220px 1fr 1fr 1fr;
+        grid-template-rows: 220px 650px;
+        font-family: 'Helvetica';
+        margin-top: 30px;
+        background-color: #F2F3F5;
+     }
+    
+     .top-container {
+        align-self: stretch;
+        grid-column-start: 1;
+        grid-column-end: 5;
+     }
+    
+     .top-container h1 {
+        font-size: 48px;
+        font-weight: 600;
+        background-color: #165C96;
+        padding-top: 15px;
+        padding-bottom: 15px;
+        color: whitesmoke;
+        letter-spacing: 8px;
+     }
+    
+     .top-container h1:hover {
+        cursor: pointer;
+     }
+    
+     .nav-bar ul {
+        list-style: none;
+        height: auto;
+        padding-left: 0px;
     }
-
-    .top-container {
+    
+    .nav-bar li {
+        display: inline;
+    }
+    
+    .nav-bar button {
+        width: 160px;
+        height: 60px;
+        margin-left: 10px;
+        margin-right: 10px;
+        font-size: 24px;
+        color: white;
+        font-weight: bold;
+        border-radius: 20px;
+    }
+    
+    .nav-bar button:hover {
+        text-decoration: underline;
+        cursor: pointer;
+    }
+    
+     .left-container {
+        width: 100%;
+        align-self: stretch;
+        grid-column-start: 1;
+        grid-column-end: 2;
+        margin: 0 auto;
+        overflow: auto;
+        margin-left: 10px;
+        height: 640px;
+    }
+    
+    .left-container ul {
+        list-style: none;
+        padding-left: 0px;
+    }
+    
+    .left-container li {
+        margin-top: 10px;
+        text-align: center;
+    }
+    
+    .train-btn {
+        margin-left: 20px;
+        margin-right: 20px;
+        width: 80%;
+        height: 80px;
+        color: white;
+        font-size: 14px;
+        border-radius: 10px;
+    }
+    
+    .train-btn:hover {
+        text-decoration: underline;
+        cursor: pointer;
+    }
+    
+     .right-container {
+        align-self: stretch;
+        grid-column-start: 2;
+        grid-column-end: 5;
+        margin-left: 10px;
+        margin-right: 10px;
+     }
+    
+     .address {
+        margin-left: 10px;
+        background-color: #165C96;
+        width: 95%;
+        padding-top: 10px;
+        padding-bottom: 10px;
+        padding-left: 5px;
+        padding-right: 5px;
+        border-radius: 10px;
+        text-align: center;
+     }
+    
+     .address label {
+        color: white;
+        font-weight: bold;
+     }
+    
+     .address input {
+        margin-left: 5px;
+        padding: 7px;
+        width: 40%
+     }
+     
+     .address button {
+        margin-left: 5px;
+        padding: 5px;
+        background-color: white;
+        letter-spacing: 2px;
+        font-size: 16px;
+        font-weight: bold;
+        color:#165C96
+     }
+    .center {
+        margin: 0 auto;
+        text-align: center;
+    }
+    
+    .green {
+        background-color: #008150;
+    }
+    
+    .red {
+        background-color: #fa2d27;
+    }
+    
+    .orange {
+        background-color: #fd8a03;
+    }
+    
+    .blue {
+        background-color: #2f5da6;
+    }
+    
+    .footer {
         grid-column-start: 1;
         grid-column-end: 5;
     }
 
-    .top-container h1 {
-        padding-top: 5px;
-        padding-bottom: 5px;
-        padding-left: 150px;
-        font-size: 30px;
-        text-align: left;
-    }
-
-    .top-container h4  {
-        font-size: 10px;
-        float: left;
-        margin-top: 5px;
-    }
-
-    .nav-bar button {
-        width: 120px;
-        height: 40px;
-        font-size: 14px;
-        border-radius: 10px;
-        margin-left: 5px;
-        margin-right: 5px;
-        float: left;
-    }
-
-    .left-container {
-        margin-top: 0px;
-        width: 100%;
-        border: none;
-        height: 450px;
-    }
-    .train-btn {
-        font-size: 10px;
-        height: 60px;
-        margin-left: 0px;
-    }
-
-    .right-container {
-        margin-top: 0px;
-        margin-left: 0px;
+    .footer p {
+        margin-top: 10px;
     }
     
-    .address {
-        height: 30px;
-        width: 60%;
-        padding: 2px;
-    }    
-
-    .address label {
-        display: none;
-    }
-
-    .address input {
-        width: 70%;
-        height: 6px;
-        margin-left: 0px;
-        margin-top: 2px;
-    }
-
-    .address button {
-        font-size: 10px;
-        width: 60x;
-        height: 25px;
-    }
-
-    footer {
-        font-size: 10px;
-    }
-
     #map {
-        margin-top: 10px;
+        width: 100%;
+        height:  530px;
+        margin-top: 30px;
+    }
+}
+
+@media only screen and (min-width: 768px) and (max-width: 1200px) {
+    .grid-container {
+        margin: 0 auto;
+        height: 740px;
+        min-width: 768px;
+        max-width: 1200px;
+        display: grid;
+        grid-template-columns: 120px 1fr 1fr 1fr;
+        grid-template-rows: 120px 650px;
+        font-family: 'Helvetica';
+        margin-top: 30px;
+        background-color: #F2F3F5;
+     }
+    
+     .top-container {
+        align-self: stretch;
+        grid-column-start: 1;
+        grid-column-end: 5;
+     }
+    
+     .top-container h1 {
+        font-size: 24px;
+        font-weight: 600;
+        background-color: #165C96;
+        padding-top: 8px;
+        padding-bottom: 8px;
+        color: whitesmoke;
+        letter-spacing: 8px;
+        margin-bottom: 0;
+     }
+
+     .top-container h4 {
+        margin-top: 5px;
+     }
+    
+     .top-container h1:hover {
+        cursor: pointer;
+     }
+    
+     .nav-bar ul {
+        list-style: none;
+        height: auto;
+        padding-left: 0px;
+        margin-top: 5px;
+        margin-bottom: 5px;
+    }
+    
+    .nav-bar li {
+        display: inline;
+    }
+    
+    .nav-bar button {
+        width: 100px;
+        height: 40px;
+        margin-left: 5px;
+        margin-right: 5px;
+        font-size: 14px;
+        color: white;
+        font-weight: bold;
+        border-radius: 20px;
+    }
+    
+    .nav-bar button:hover {
+        text-decoration: underline;
+        cursor: pointer;
+    }
+    
+     .left-container {
+        width: 100%;
+        align-self: stretch;
+        grid-column-start: 1;
+        grid-column-end: 2;
+        margin: 0 auto;
+        overflow: auto;
         margin-left: 0px;
-        width: 65%;
-        height: 420px;
+        height: 580px;
+    }
+    
+    .left-container ul {
+        list-style: none;
+        padding-left: 0px;
+    }
+    
+    .left-container li {
+        margin-top: 10px;
+        text-align: center
+    }
+    
+    .train-btn {
+        margin-left: 20px;
+        margin-right: 20px;
+        width: 100px;
+        height: 60px;
+        color: white;
+        font-size: 10px;
+        border-radius: 10px;
+    }
+    
+    .train-btn:hover {
+        text-decoration: underline;
+        cursor: pointer;
+    }
+    
+     .right-container {
+        align-self: stretch;
+        grid-column-start: 2;
+        grid-column-end: 5;
+        margin-left: 15px;
+        margin-right: 10px;
+     }
+    
+     .address {
+        margin-left: 10px;
+        background-color: #165C96;
+        width: 95%;
+        padding-top: 4px;
+        padding-bottom: 4px;
+        padding-left: 5px;
+        padding-right: 5px;
+        border-radius: 10px;
+        text-align: center;
+     }
+    
+     .address label {
+        color: white;
+        font-weight: bold;
+        font-size: 12px;
+     }
+    
+     .address input {
+        margin-left: 5px;
+        padding: 7px;
+        width: 40%;
+        height: 8px;
+     }
+     
+     .address button {
+        margin-left: 2px;
+        padding: 2px;
+        background-color: white;
+        letter-spacing: 2px;
+        font-size: 12px;
+        font-weight: bold;
+        color:#165C96
+     }
+    .center {
+        margin: 0 auto;
+        text-align: center;
+    }
+    
+    .green {
+        background-color: #008150;
+    }
+    
+    .red {
+        background-color: #fa2d27;
+    }
+    
+    .orange {
+        background-color: #fd8a03;
+    }
+    
+    .blue {
+        background-color: #2f5da6;
+    }
+    
+    .footer {
+        grid-column-start: 1;
+        grid-column-end: 5;
+    }
+
+    .footer p {
+        margin-top: 10px;
+    }
+    
+    #map {
+        width: 100%;
+        height:  530px;
+        margin-top: 10px;
+    }
+}
+
+@media only screen and (max-width: 768px) {
+    .grid-container {
+        margin: 0 auto;
+        height: 680px;
+        min-width: 300px;
+        max-width: 768px;
+        display: grid;
+        grid-template-columns: 120px 1fr 1fr 1fr;
+        grid-template-rows: 90px 650px;
+        font-family: 'Helvetica';
+        margin-top: 30px;
+        background-color: #F2F3F5;
+     }
+    
+     .top-container {
+        align-self: stretch;
+        grid-column-start: 1;
+        grid-column-end: 5;
+     }
+    
+     .top-container h1 {
+        font-size: 18px;
+        font-weight: 600;
+        background-color: #165C96;
+        padding-top: 4px;
+        padding-bottom: 4px;
+        color: whitesmoke;
+        letter-spacing: 8px;
+        margin-bottom: 0;
+     }
+
+     .top-container h4 {
+        margin-top: 5px;
+        font-size: 10px;
+     }
+    
+     .top-container h1:hover {
+        cursor: pointer;
+     }
+    
+     .nav-bar ul {
+        list-style: none;
+        height: auto;
+        padding-left: 0px;
+        margin-top: 5px;
+        margin-bottom: 5px;
+    }
+    
+    .nav-bar li {
+        display: inline;
+    }
+    
+    .nav-bar button {
+        width: 80px;
+        height: 30px;
+        margin-left: 5px;
+        margin-right: 5px;
+        font-size: 10px;
+        color: white;
+        font-weight: bold;
+        border-radius: 20px;
+    }
+    
+    .nav-bar button:hover {
+        text-decoration: underline;
+        cursor: pointer;
+    }
+    
+     .left-container {
+        width: 100%;
+        align-self: stretch;
+        grid-column-start: 1;
+        grid-column-end: 2;
+        margin: 0 auto;
+        overflow: auto;
+        margin-left: 0px;
+        height: 570px;
+    }
+    
+    .left-container ul {
+        list-style: none;
+        padding-left: 0px;
+    }
+    
+    .left-container li {
+        margin-top: 10px;
+        text-align: center;
+        margin-top: 1px;
+    }
+    
+    .train-btn {
+        width: 90px;
+        height: 40px;
+        color: white;
+        font-size: 7px;
+        border-radius: 10px;
+    }
+    
+    .train-btn:hover {
+        text-decoration: underline;
+        cursor: pointer;
+    }
+    
+     .right-container {
+        align-self: stretch;
+        grid-column-start: 2;
+        grid-column-end: 5;
+        margin-left: 0px;
+        margin-right: 10px;
+     }
+    
+     .address {
+        margin-left: 10px;
+        background-color: #165C96;
+        width: 95%;
+        padding-top: 4px;
+        padding-bottom: 4px;
+        padding-left: 5px;
+        padding-right: 5px;
+        border-radius: 10px;
+        text-align: left;
+     }
+    
+     .address label {
+        color: white;
+        font-weight: bold;
+        font-size: 8px;
+        display: none;
+     }
+    
+     .address input {
+        margin-left: 5px;
+        padding: 7px;
+        width: 60%;
+        height: 6px;
+     }
+     
+     .address button {
+        margin-left: 2px;
+        padding: 2px;
+        background-color: white;
+        letter-spacing: 2px;
+        font-size: 12px;
+        font-weight: bold;
+        color:#165C96
+     }
+    .center {
+        margin: 0 auto;
+        text-align: center;
+    }
+    
+    .green {
+        background-color: #008150;
+    }
+    
+    .red {
+        background-color: #fa2d27;
+    }
+    
+    .orange {
+        background-color: #fd8a03;
+    }
+    
+    .blue {
+        background-color: #2f5da6;
+    }
+    
+    .footer {
+        grid-column-start: 1;
+        grid-column-end: 5;
+    }
+
+    .footer p {
+        margin-top: 10px;
+    }
+    
+    #map {
+        width: 100%;
+        height:  530px;
+        margin-top: 10px;
     }
 }
