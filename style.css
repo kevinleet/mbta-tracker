@@ -69,12 +69,13 @@
         margin: 0 auto;
         overflow: auto;
         margin-left: 10px;
-        height: 640px;
+        height: 650px;
     }
     
     .left-container ul {
         list-style: none;
         padding-left: 0px;
+        margin-top: 1px;
     }
     
     .left-container li {
@@ -179,6 +180,10 @@
     #purple-btn {
         width: 190px;
     }
+
+    #train-count {
+        font-size: 16px;
+    }
 }
 
 @media only screen and (min-width: 768px) and (max-width: 1200px) {
@@ -262,11 +267,12 @@
     .left-container ul {
         list-style: none;
         padding-left: 0px;
+        margin-top: 0px;
     }
     
     .left-container li {
         margin-top: 10px;
-        text-align: center
+        text-align: center;
     }
     
     .train-btn {
@@ -369,6 +375,11 @@
     #purple-btn {
         width: 120px;
     }
+
+    #train-count {
+        margin-left: 10px;
+        font-size: 12px;
+    }
 }
 
 @media only screen and (max-width: 768px) {
@@ -453,6 +464,7 @@
     .left-container ul {
         list-style: none;
         padding-left: 0px;
+        margin-top: 0px;
     }
     
     .left-container li {
@@ -460,6 +472,7 @@
         text-align: center;
         margin-top: 1px;
     }
+
     
     .train-btn {
         width: 90px;
@@ -559,5 +572,11 @@
 
     #purple-btn {
         width: 70px;
+    }
+
+    #train-count {
+        margin-left: 6
+        px;
+        font-size: 8px;
     }
 }

@@ -9,6 +9,7 @@ let $blueBtn = $('#blue-btn')
 let $purpleBtn = $('#purple-btn')
 let $trainList = $('#train-list')
 let $leftContainer = $('.left-container')
+let $trainCount = $('#train-count')
 let $rightContainer = $('.right-container')
 let $inputBar = $('#input-bar')
 let $submit = $('#submit')
@@ -49,6 +50,7 @@ $navList.on('click', 'button', async function() {
     parseTrainData(response, value)
     renderStopMarkers(routeFilter)
     renderPolyline(routeFilter, value)
+    
 })
 
 // Add event listener to individual train buttons. On click, will center the map location of train selected
@@ -102,6 +104,7 @@ async function parseTrainData(response, value) {
             $trainList.append(`<li><button class="train-btn ${value}" label="${label}" lat="${lat}" lon="${lon}">${label} ${directionName}bound</br>${status}</br>${stopName}</br>${prediction}</button></li>`)
         }
     }
+    $trainCount.text(`${$trainList.children().length} Active Trains`)
 }
 
 // Function that queries the MBTA API for prediction information, and calculates time difference in minutes
