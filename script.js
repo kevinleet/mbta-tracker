@@ -19,6 +19,7 @@ let $inputBar = $('#input-bar')
 let $submit = $('#submit')
 let $map = $('#map')
 let $footer = $('footer')
+let $github = $('#github')
 
 // Add event listener to darkmode button to toggle on/off dark mode properties
 let darkMode = false;
@@ -32,6 +33,7 @@ $darkMode.on('click', () => {
         $darkMode.css("background-color", "#121212")
         $darkMode.css("color", "white")
         $darkMode.text("Dark Mode")
+        $github.attr("src", "images/github.png")
         darkMode = !darkMode
     } else {
         $body.css("background-color", "#121212")
@@ -42,6 +44,7 @@ $darkMode.on('click', () => {
         $darkMode.css("background-color", "white")
         $darkMode.css("color", "black")
         $darkMode.text("Light Mode")
+        $github.attr("src", "images/github_white.png")
         darkMode = !darkMode
     }
 })
