@@ -2,6 +2,7 @@
 
 ![mbta_map](https://github.com/kevinleet/mbtatracker/blob/main/images/mbta_map.png?raw=true)
 
+
 ## Description
 This web application queries data from the MBTA V3 API and plots positions of routes, trains and stops on a map that is powered by the MapQuest.js SDK.
 
@@ -24,9 +25,11 @@ In addition to the populating of the sidebar with train buttons, the displayed m
 Above the displayed map is an input field that allows users to input a location (address, zip code, or coordinates) and a marker corresponding to
 that location will be rendered on the map, and the map will pan and center to that marker. Users are able to add multiple markers to the map and the markers will remain on the map even when selecting between the different lines.
 
+
 ## Resources
 - GitHub Repo [https://github.com/kevinleet/mbtatracker]
 - Trello [https://trello.com/b/p2aaoudT/mbta-tracker]
+
 
 ## Credits
 - MBTA V3 API [https://www.mbta.com/developers/v3-api]

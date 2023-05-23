@@ -1,4 +1,12 @@
 @media only screen and (min-width: 1200px) {
+    #darkmode {
+        float: right;
+        color: white;
+        background-color: #121212;
+        padding: 4px;
+        border-radius: 5px;
+    }
+    
     .grid-container {
         margin: 0 auto;
         height: 900px;
@@ -195,6 +203,17 @@
 }
 
 @media only screen and (min-width: 768px) and (max-width: 1200px) {
+    #darkmode {
+        float: right;
+        color: white;
+        background-color: #121212;
+        padding: 4px;
+        border-radius: 5px;
+        width: 70px;
+        height: 25px;
+        font-size: 10px;
+    }
+
     .grid-container {
         margin: 0 auto;
         height: 740px;
@@ -410,6 +429,19 @@
 }
 
 @media only screen and (max-width: 768px) {
+    #darkmode {
+        float: right;
+        color: white;
+        background-color: #121212;
+        padding: 4px;
+        border-radius: 5px;
+        width: 50px;
+        font-size: 8px;
+        width: 60px;
+        height: 20px;
+        font-size: 8px;
+    }
+
     .grid-container {
         margin: 0 auto;
         height: 680px;

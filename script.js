@@ -1,6 +1,10 @@
 L.mapquest.key = 'IFutcz97fDjINJ1QeUpcmgVDzFLIDfex';
 let apiKey = 'b2aaa7561cc145a5b412d187b054ba79'
+let $darkMode = $('#darkmode')
+let $body = $('body')
+let $gridContainer = $('.grid-container')
 let $h1 = $('h1')
+let $h4 = $('h4')
 let $navList = $('#nav-list')
 let $greenBtn = $('#green-btn')
 let $redBtn = $('#red-btn')
@@ -14,6 +18,33 @@ let $rightContainer = $('.right-container')
 let $inputBar = $('#input-bar')
 let $submit = $('#submit')
 let $map = $('#map')
+let $footer = $('footer')
+
+// Add event listener to darkmode button to toggle on/off dark mode properties
+let darkMode = false;
+$darkMode.on('click', () => {
+    if (darkMode) {
+        $body.css("background-color", "white")
+        $gridContainer.css("background-color", "#F2F3F5")
+        $h4.css("color", "black")
+        $trainCount.css("color", "black")
+        $footer.css("color", "black")
+        $darkMode.css("background-color", "#121212")
+        $darkMode.css("color", "white")
+        $darkMode.text("Dark Mode")
+        darkMode = !darkMode
+    } else {
+        $body.css("background-color", "#121212")
+        $gridContainer.css("background-color", "#121212")
+        $h4.css("color", "white")
+        $trainCount.css("color", "white")
+        $footer.css("color", "white")
+        $darkMode.css("background-color", "white")
+        $darkMode.css("color", "black")
+        $darkMode.text("Light Mode")
+        darkMode = !darkMode
+    }
+})
 
 // Initialize map settings and render map
 let map;
