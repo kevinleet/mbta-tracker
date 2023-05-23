@@ -8,7 +8,7 @@
         grid-template-columns: 220px 1fr 1fr 1fr;
         grid-template-rows: 200px 650px;
         font-family: 'Helvetica';
-        margin-top: 30px;
+        margin-top: 0px;
         background-color: #F2F3F5;
      }
     
@@ -165,10 +165,18 @@
     .footer {
         grid-column-start: 1;
         grid-column-end: 5;
+        text-align: center;
     }
 
-    .footer p {
-        margin-top: 10px;
+    .footer-list {
+        list-style: none;
+        padding-left: 0px;
+        margin-top: 0px;
+    }
+
+    .footer-list li {
+        display: inline;
+        vertical-align: middle;
     }
     
     #map {
@@ -196,7 +204,7 @@
         grid-template-columns: 120px 1fr 1fr 1fr;
         grid-template-rows: 120px 650px;
         font-family: 'Helvetica';
-        margin-top: 30px;
+        margin-top: 0px;
         background-color: #F2F3F5;
      }
     
@@ -360,10 +368,29 @@
     .footer {
         grid-column-start: 1;
         grid-column-end: 5;
+        text-align: center;
     }
 
-    .footer p {
-        margin-top: 10px;
+    .footer-list {
+        list-style: none;
+        padding-left: 0px;
+        margin-top: 0px;
+    }
+
+    .footer-list li {
+        display: inline;
+        vertical-align: middle;
+        font-size: 12px;
+    }
+
+    #github {
+        width: 40px;
+        height: 16px;
+    }
+
+    #linkedin {
+        width: 46px;
+        height: 11px;
     }
     
     #map {
@@ -392,7 +419,7 @@
         grid-template-columns: 120px 1fr 1fr 1fr;
         grid-template-rows: 90px 650px;
         font-family: 'Helvetica';
-        margin-top: 30px;
+        margin-top: 0px;
         background-color: #F2F3F5;
      }
     
@@ -558,10 +585,29 @@
     .footer {
         grid-column-start: 1;
         grid-column-end: 5;
+        text-align: center;
     }
 
-    .footer p {
-        margin-top: 10px;
+    .footer-list {
+        list-style: none;
+        padding-left: 0px;
+        margin-top: 0px;
+    }
+
+    .footer-list li {
+        display: inline;
+        vertical-align: middle;
+        font-size: 7px;
+    }
+
+    #github {
+        width: 30px;
+        height: 12px;
+    }
+
+    #linkedin {
+        width: 35px;
+        height: 8px;
     }
     
     #map {
