@@ -84,7 +84,6 @@ $navList.on('click', 'button', async function() {
     parseTrainData(response, value)
     renderStopMarkers(routeFilter)
     renderPolyline(routeFilter, value)
-    
 })
 
 // Add event listener to individual train buttons. On click, will center the map location of train selected
