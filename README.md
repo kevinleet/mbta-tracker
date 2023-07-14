@@ -2,7 +2,7 @@
 
 ![mbta_map](https://github.com/kevinleet/mbtatracker/blob/main/images/mbta_map.png?raw=true)
 
-Link to Deployed Application: [https://level-wound.surge.sh/](https://level-wound.surge.sh/)
+Link to Deployed Application: [mbta-tracker-production.up.railway.app/](https://mbta-tracker-production.up.railway.app/)
 
 ## Description
 
