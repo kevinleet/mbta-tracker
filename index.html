@@ -1,53 +1,119 @@
 <!DOCTYPE html>
 <html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta http-equiv="X-UA-Compatible" content="IE=edge">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <link rel="stylesheet" href="style.css"/>
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link rel="stylesheet" href="style.css" />
     <script src="https://unpkg.com/axios/dist/axios.min.js"></script>
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.7.0/jquery.min.js" integrity="sha512-3gJwYpMe3QewGELv8k/BX9vcqhryRdzRMxVfq6ngyWXwo03GFEzjsUm8Q7RZcHPHksttq7/GFoxjCVUjkjvPdw==" crossorigin="anonymous" referrerpolicy="no-referrer"></script>
+    <script
+      src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.7.0/jquery.min.js"
+      integrity="sha512-3gJwYpMe3QewGELv8k/BX9vcqhryRdzRMxVfq6ngyWXwo03GFEzjsUm8Q7RZcHPHksttq7/GFoxjCVUjkjvPdw=="
+      crossorigin="anonymous"
+      referrerpolicy="no-referrer"
+    ></script>
     <script src="https://api.mqcdn.com/sdk/mapquest-js/v1.3.2/mapquest.js"></script>
-    <link type="text/css" rel="stylesheet" href="https://api.mqcdn.com/sdk/mapquest-js/v1.3.2/mapquest.css"/>
+    <link
+      type="text/css"
+      rel="stylesheet"
+      href="https://api.mqcdn.com/sdk/mapquest-js/v1.3.2/mapquest.css"
+    />
     <script defer src="script.js"></script>
     <title>MBTA Tracker</title>
-</head>
-<body>
+  </head>
+  <body>
     <div class="grid-container">
-        <header class="top-container">   
-            <button id="darkmode">Dark Mode</button>
-            <h1 class="center">MBTA TRACKER</h1>
-            <div class="nav-bar center">
-                <ul id="nav-list">
-                    <li><button class="green" id="green-btn" value="green" route="Green-B,Green-C,Green-D,Green-E">Green Line</button></li>
-                    <li><button class="red" id="red-btn" value="red" route="Red">Red Line</button></li>
-                    <li><button class="orange" id="orange-btn" value="orange" route="Orange">Orange Line</button></li>
-                    <li><button class="blue" id="blue-btn" value="blue" route="Blue">Blue Line</button></li>
-                    <li><button class="purple" id="purple-btn" value="purple" route="CR-Fitchburg,CR-Providence,CR-Newburyport,CR-Worcester,CR-Lowell,CR-Needham,CR-Middleborough,CR-Haverhill,CR-Greenbush,CR-Kingston,CR-Franklin">Commuter Rail</button></li>
-                </ul>
-                <h4 class="center">Select an MBTA line above. All stops and active trains will be displayed on the map.</h4>
-            </div>
-        </header>
-        <div class="left-container">
-            <p class="center" id="train-count"></p>
-            <ul id="train-list">
-            </ul>
+      <header class="top-container">
+        <button id="darkmode">Dark Mode</button>
+        <h1 class="center">MBTA TRACKER</h1>
+        <div class="nav-bar center">
+          <ul id="nav-list">
+            <li>
+              <button
+                class="green"
+                id="green-btn"
+                value="green"
+                route="Green-B,Green-C,Green-D,Green-E"
+              >
+                Green Line
+              </button>
+            </li>
+            <li>
+              <button class="red" id="red-btn" value="red" route="Red">
+                Red Line
+              </button>
+            </li>
+            <li>
+              <button
+                class="orange"
+                id="orange-btn"
+                value="orange"
+                route="Orange"
+              >
+                Orange Line
+              </button>
+            </li>
+            <li>
+              <button class="blue" id="blue-btn" value="blue" route="Blue">
+                Blue Line
+              </button>
+            </li>
+            <li>
+              <button
+                class="purple"
+                id="purple-btn"
+                value="purple"
+                route="CR-Fitchburg,CR-Providence,CR-Newburyport,CR-Worcester,CR-Lowell,CR-Needham,CR-Middleborough,CR-Haverhill,CR-Greenbush,CR-Kingston,CR-Franklin"
+              >
+                Commuter Rail
+              </button>
+            </li>
+          </ul>
+          <h4 class="center">
+            Select an MBTA line above. All stops and active trains will be
+            displayed on the map.
+          </h4>
         </div>
-        <div class="right-container">
-            <div class="address">
-                <label for="address-input">Enter a location to plot it on the map. </label>
-                <input class="address-input"  id="input-bar" placeholder="Enter an address, location, or coordinates.">
-                <button type="submit" id="submit">Submit</button>
-            </div>
-            <div id="map"></div>
+      </header>
+      <div class="left-container">
+        <p class="center" id="train-count"></p>
+        <ul id="train-list"></ul>
+      </div>
+      <div class="right-container">
+        <div class="address">
+          <label for="address-input"
+            >Enter a location to plot it on the map.
+          </label>
+          <input
+            class="address-input"
+            id="input-bar"
+            placeholder="Enter an address, location, or coordinates."
+          />
+          <button type="submit" id="submit">Submit</button>
         </div>
+        <div id="map"></div>
+      </div>
     </div>
-    <footer class="center footer" >
-        <ul class="footer-list">
-            <li><a href="https://github.com/kevinleet/mbtatracker" target="_blank"><img src="./images/github.png" height="24px" width="60px" id="github"/></a></li>
-            <li><a href="https://www.linkedin.com/in/kevinli617/" target="_blank"><img src="./images/linkedin.png" height="17px" width="70px" id="linkedin"/></a></li>
-            <li><span class="copyright">© Kevin Li 2023</span></li>
-        </ul>     
+    <footer class="center footer">
+      <ul class="footer-list">
+        <!-- <li><a href="https://github.com/kevinleet/mbtatracker" target="_blank"><img src="./images/github.png" height="24px" width="60px" id="github"/></a></li> -->
+        <!-- <li>
+          <a href="https://www.linkedin.com/in/kevinli617/" target="_blank"
+            ><img
+              src="./images/linkedin.png"
+              height="17px"
+              width="70px"
+              id="linkedin"
+          /></a>
+        </li> -->
+        <li>
+          <span class="copyright"
+            >©
+            <a href="https://kevinli.boston/" target="_blank">Kevin Li</a>
+            2023</span
+          >
+        </li>
+      </ul>
     </footer>
-</body>
+  </body>
 </html>
